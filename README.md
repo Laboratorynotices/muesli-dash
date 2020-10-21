@@ -1,4 +1,5 @@
 # muesli-dash
+Балуюсь с кодом, учусь писать.
 
 ## Project setup
 ```
