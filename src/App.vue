@@ -7,16 +7,18 @@
 </template>
 
 <script>
-import Empty from '@/layouts/Empty.vue'
+import EmptyLayout from '@/layouts/Empty-layout.vue'
+import MainLayout from '@/layouts/Main-layout.vue'
 
 export default {
   computed: {
     layout: function () {
-      return (this.$route.meta.layout || 'empty')
+      return ((this.$route.meta.layout || 'empty') + '-layout')
     }
   },
   components: {
-    Empty
+    EmptyLayout,
+    MainLayout
   }
 }
 </script>

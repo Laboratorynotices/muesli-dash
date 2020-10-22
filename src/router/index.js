@@ -10,11 +10,19 @@ const routes = [
     name: 'Home',
     component: Home
   },
+  // Блок с пустым (empty) лайоутом.
   {
     path: '/login',
     name: 'Login',
     meta: { layout: 'empty' },
     component: () => import('@/views/Login.vue')
+  },
+  // Блок с основным (main) лайоутом.
+  {
+    path: '/blank',
+    name: 'Blank',
+    meta: { layout: 'main' },
+    component: () => import('@/views/Blank.vue')
   }
 ]
 
