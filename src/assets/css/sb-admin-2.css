@@ -10392,10 +10392,9 @@ a:focus {
   cursor: pointer;
 }
 
-.sidebar #sidebarToggle::after {
+.sidebar #sidebarToggle {
+  color: rgba(255, 255, 255, 0.8);
   font-weight: 900;
-  content: '\f104';
-  font-family: 'Font Awesome 5 Free';
   margin-right: 0.1rem;
 }
 
@@ -10430,7 +10429,7 @@ a:focus {
   z-index: 1;
 }
 
-.sidebar .sidebar-brand .sidebar-brand-icon i {
+.sidebar .sidebar-brand .sidebar-brand-icon {
   font-size: 2rem;
 }
 
@@ -10480,8 +10479,9 @@ a:focus {
     padding: 1rem;
     width: 14rem;
   }
-  .sidebar .nav-item .nav-link i {
+  .sidebar .nav-item .nav-link svg {
     font-size: 0.85rem;
+    margin-bottom: 0.15rem;
     margin-right: 0.25rem;
   }
   .sidebar .nav-item .nav-link span {
@@ -10550,7 +10550,7 @@ a:focus {
     font-size: 0.65rem;
     display: block;
   }
-  .sidebar.toggled .nav-item .nav-link i {
+  .sidebar.toggled .nav-item .nav-link svg {
     margin-right: 0;
   }
   .sidebar.toggled .nav-item .nav-link[data-toggle="collapse"]::after {
@@ -10583,7 +10583,7 @@ a:focus {
   color: #858796;
 }
 
-.sidebar-light .nav-item .nav-link i {
+.sidebar-light .nav-item .nav-link svg {
   color: #d1d3e2;
 }
 
@@ -10603,7 +10603,7 @@ a:focus {
   color: #6e707e;
 }
 
-.sidebar-light .nav-item.active .nav-link i {
+.sidebar-light .nav-item.active .nav-link svg {
   color: #6e707e;
 }
 
@@ -10635,15 +10635,19 @@ a:focus {
   color: rgba(255, 255, 255, 0.8);
 }
 
-.sidebar-dark .nav-item .nav-link i {
+.sidebar-dark .nav-item .nav-link svg {
   color: rgba(255, 255, 255, 0.3);
 }
 
-.sidebar-dark .nav-item .nav-link:active, .sidebar-dark .nav-item .nav-link:focus, .sidebar-dark .nav-item .nav-link:hover {
+.sidebar-dark .nav-item .nav-link:active,
+.sidebar-dark .nav-item .nav-link:focus,
+.sidebar-dark .nav-item .nav-link:hover {
   color: #fff;
 }
 
-.sidebar-dark .nav-item .nav-link:active i, .sidebar-dark .nav-item .nav-link:focus i, .sidebar-dark .nav-item .nav-link:hover i {
+.sidebar-dark .nav-item .nav-link:active svg,
+.sidebar-dark .nav-item .nav-link:focus svg,
+.sidebar-dark .nav-item .nav-link:hover svg {
   color: #fff;
 }
 
@@ -10655,7 +10659,7 @@ a:focus {
   color: #fff;
 }
 
-.sidebar-dark .nav-item.active .nav-link i {
+.sidebar-dark .nav-item.active .nav-link svg {
   color: #fff;
 }
 

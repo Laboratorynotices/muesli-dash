@@ -8,9 +8,7 @@
       class="sidebar-brand d-flex align-items-center justify-content-center"
       href="index.html"
     >
-      <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fas fa-laugh-wink"></i>
-      </div>
+      <b-icon icon="emoji-laughing" rotate="-15" class="sidebar-brand-icon"></b-icon>
       <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
     </a>
 
@@ -20,6 +18,7 @@
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
       <a class="nav-link" href="index.html">
+        <b-icon icon="gem"></b-icon>
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a
       >
@@ -41,7 +40,7 @@
         aria-expanded="true"
         aria-controls="collapseTwo"
       >
-        <i class="fas fa-fw fa-cog"></i>
+        <b-icon icon="gear-fill"></b-icon>
         <span>Components</span>
       </a>
       <div
@@ -68,7 +67,7 @@
         aria-expanded="true"
         aria-controls="collapseUtilities"
       >
-        <i class="fas fa-fw fa-wrench"></i>
+        <b-icon icon="tools"></b-icon>
         <span>Utilities</span>
       </a>
       <div
@@ -105,7 +104,7 @@
         aria-expanded="true"
         aria-controls="collapsePages"
       >
-        <i class="fas fa-fw fa-folder"></i>
+        <b-icon icon="folder-fill"></b-icon>
         <span>Pages</span>
       </a>
       <div
@@ -132,7 +131,7 @@
     <!-- Nav Item - Charts -->
     <li class="nav-item">
       <a class="nav-link" href="charts.html">
-        <i class="fas fa-fw fa-chart-area"></i>
+        <b-icon icon="bar-chart-line-fill"></b-icon>
         <span>Charts</span></a
       >
     </li>
@@ -140,7 +139,7 @@
     <!-- Nav Item - Tables -->
     <li class="nav-item">
       <a class="nav-link" href="tables.html">
-        <i class="fas fa-fw fa-table"></i>
+        <b-icon icon="table"></b-icon>
         <span>Tables</span></a
       >
     </li>
@@ -150,7 +149,9 @@
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
-      <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      <button class="rounded-circle border-0" id="sidebarToggle">
+        <b-icon icon="chevron-left"></b-icon>
+      </button>
     </div>
   </ul>
 </template>
