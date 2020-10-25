@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import BlankLayout from '@/layouts/Blank-layout.vue'
 import EmptyLayout from '@/layouts/Empty-layout.vue'
 import MainLayout from '@/layouts/Main-layout.vue'
 
@@ -18,7 +19,8 @@ export default {
   },
   components: {
     EmptyLayout,
-    MainLayout
+    MainLayout,
+    BlankLayout
   }
 }
 </script>

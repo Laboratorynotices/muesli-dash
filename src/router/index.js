@@ -8,6 +8,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
+    meta: { layout: 'blank' },
     component: Home
   },
   // Блок с пустым (empty) лайоутом.
