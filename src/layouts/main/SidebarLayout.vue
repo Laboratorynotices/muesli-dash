@@ -11,14 +11,17 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0" />
 
+    <!-- Перебираем все верхние группы пунктов меню. -->
     <div
       v-for="(menuElementsGroup, groupId) in menuElementsGroups"
       :key="groupId"
       class="nav-item"
     >
       <!-- Heading -->
+      <!-- Необязательный заголовок -->
       <div v-if="menuElementsGroup.name" class="sidebar-heading">{{ menuElementsGroup.name }}</div>
 
+      <!-- Пункты меню первого уровня -->
       <div
         v-for="(element, elementId) in menuElementsGroup.elemets"
         :key="elementId"
@@ -35,17 +38,20 @@
           <span>{{element.name}}</span>
         </b-nav-item>
 
+        <!-- Скрывающаяся часть -->
         <b-collapse
           v-if="element.childGroups"
           :id="element.name"
           class="collapse show"
         >
           <div class="bg-white py-2 collapse-inner rounded">
+            <!-- Пункты меню второго уровня разбиты на группы, как и пункты меню первого уровня -->
             <div
               v-for="(childGroup, childGroupId) in element.childGroups"
               :key="childGroupId"
             >
               <h6 class="collapse-header">{{childGroup.name}}:</h6>
+              <!-- Отображение самих пунктов меню второго уровня -->
               <router-link
                 v-for="(child, childId) in childGroup.childs"
                 :key="childId"
@@ -62,8 +68,8 @@
 
       </div>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider" />
+      <!-- Divider -->
+      <hr class="sidebar-divider" />
     </div>
   </b-nav>
 
