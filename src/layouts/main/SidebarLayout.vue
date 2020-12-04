@@ -1,234 +1,92 @@
 <template>
-<div id="temp">
-  <b-nav class="navbar-nav bg-gradient-primary sidebar sidebar-dark">
+  <b-collapse id="accordion-1" visible accordion="navbar" role="tabpanel">
+    <b-nav class="bg-gradient-primary navbar-nav sidebar sidebar-dark" role="tabpanel">
 
-    <!-- Sidebar - Brand -->
-    <b-navbar-brand href="#" class="sidebar-brand d-flex align-items-center justify-content-center">
-      <b-icon icon="emoji-laughing" rotate="-15" class="sidebar-brand-icon"></b-icon>
-      <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
-    </b-navbar-brand>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0" />
-
-    <!-- Перебираем все верхние группы пунктов меню. -->
-    <div
-      v-for="(menuElementsGroup, groupId) in menuElementsGroups"
-      :key="groupId"
-      class="nav-item"
-    >
-      <!-- Heading -->
-      <!-- Необязательный заголовок -->
-      <div v-if="menuElementsGroup.name" class="sidebar-heading">{{ menuElementsGroup.name }}</div>
-
-      <!-- Пункты меню первого уровня -->
-      <div
-        v-for="(element, elementId) in menuElementsGroup.elemets"
-        :key="elementId"
-      >
-        <!-- Nav Item - Dashboard -->
-        <b-nav-item
-          active-class="active"
-          class="my-0"
-          v-b-toggle="(element.childGroups) ? element.name : ''"
-          :to="(element.url != '') ? element.url : '#'"
-          :disabled="element.url == '#'"
-        >
-          <b-icon :icon="element.icon"></b-icon>
-          <span>{{element.name}}</span>
-        </b-nav-item>
-
-        <!-- Скрывающаяся часть -->
-        <b-collapse
-          v-if="element.childGroups"
-          :id="element.name"
-          class="collapse show"
-        >
-          <div class="bg-white py-2 collapse-inner rounded">
-            <!-- Пункты меню второго уровня разбиты на группы, как и пункты меню первого уровня -->
-            <div
-              v-for="(childGroup, childGroupId) in element.childGroups"
-              :key="childGroupId"
-            >
-              <h6 class="collapse-header">{{childGroup.name}}:</h6>
-              <!-- Отображение самих пунктов меню второго уровня -->
-              <router-link
-                v-for="(child, childId) in childGroup.childs"
-                :key="childId"
-                class="collapse-item"
-                :to="(child.url != '') ? child.url : '#'"
-                :disabled="child.url == '#'"
-                active-class="active"
-              >
-                {{child.name}}
-              </router-link>
-            </div>
-          </div>
-        </b-collapse>
-
-      </div>
+      <!-- Sidebar - Brand -->
+      <b-navbar-brand href="#" class="sidebar-brand d-flex align-items-center justify-content-center">
+        <b-icon icon="emoji-laughing" rotate="-15" class="sidebar-brand-icon"></b-icon>
+        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+      </b-navbar-brand>
 
       <!-- Divider -->
-      <hr class="sidebar-divider" />
-    </div>
-  </b-nav>
+      <hr class="sidebar-divider my-0" />
 
-  <ul
-    class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
-    id="accordionSidebar"
-  >
-    <!-- Sidebar - Brand -->
-    <a
-      class="sidebar-brand d-flex align-items-center justify-content-center"
-      href="index.html"
-    >
-      <b-icon icon="emoji-laughing" rotate="-15" class="sidebar-brand-icon"></b-icon>
-      <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
-    </a>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0" />
-
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-      <a class="nav-link" href="index.html">
-        <b-icon icon="gem"></b-icon>
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard</span></a
-      >
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider" />
-
-    <!-- Heading -->
-    <div class="sidebar-heading">Interface</div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-      <a
-        class="nav-link collapsed"
-        href="#"
-        data-toggle="collapse"
-        data-target="#collapseTwo"
-        aria-expanded="true"
-        aria-controls="collapseTwo"
-      >
-        <b-icon icon="gear-fill"></b-icon>
-        <span>Components</span>
-      </a>
+      <!-- Перебираем все верхние группы пунктов меню. -->
       <div
-        id="collapseTwo"
-        class="collapse"
-        aria-labelledby="headingTwo"
-        data-parent="#accordionSidebar"
+        v-for="(menuElementsGroup, groupId) in menuElementsGroups"
+        :key="groupId"
+        class="nav-item"
       >
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Custom Components:</h6>
-          <a class="collapse-item" href="buttons.html">Buttons</a>
-          <a class="collapse-item" href="cards.html">Cards</a>
-        </div>
-      </div>
-    </li>
+        <!-- Heading -->
+        <!-- Необязательный заголовок -->
+        <div v-if="menuElementsGroup.name" class="sidebar-heading">{{ menuElementsGroup.name }}</div>
 
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-      <a
-        class="nav-link collapsed"
-        href="#"
-        data-toggle="collapse"
-        data-target="#collapseUtilities"
-        aria-expanded="true"
-        aria-controls="collapseUtilities"
-      >
-        <b-icon icon="tools"></b-icon>
-        <span>Utilities</span>
-      </a>
-      <div
-        id="collapseUtilities"
-        class="collapse"
-        aria-labelledby="headingUtilities"
-        data-parent="#accordionSidebar"
-      >
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Custom Utilities:</h6>
-          <a class="collapse-item" href="utilities-color.html">Colors</a>
-          <a class="collapse-item" href="utilities-border.html">Borders</a>
-          <a class="collapse-item" href="utilities-animation.html"
-            >Animations</a
+        <!-- Пункты меню первого уровня -->
+        <div
+          v-for="(element, elementId) in menuElementsGroup.elemets"
+          :key="elementId"
+        >
+          <!-- Nav Item - Dashboard -->
+          <b-nav-item
+            active-class="active"
+            class="my-0"
+            v-b-toggle="(element.childGroups) ? element.name : ''"
+            :to="(element.url != '') ? element.url : '#'"
+            :disabled="element.url == '#'"
           >
-          <a class="collapse-item" href="utilities-other.html">Other</a>
-        </div>
-      </div>
-    </li>
+            <b-icon :icon="element.icon"></b-icon>
+            <span>{{element.name}}</span>
+            <span
+              class="ribbon"
+              v-if="element.childGroups"
+              >
+              <b-icon icon="chevron-right" class="when-opened"></b-icon>
+              <b-icon icon="chevron-down" class="when-closed"></b-icon>
+            </span>
+          </b-nav-item>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider" />
-
-    <!-- Heading -->
-    <div class="sidebar-heading">Addons</div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item active">
-      <a
-        class="nav-link"
-        href="#"
-        data-toggle="collapse"
-        data-target="#collapsePages"
-        aria-expanded="true"
-        aria-controls="collapsePages"
-      >
-        <b-icon icon="folder-fill"></b-icon>
-        <span>Pages</span>
-      </a>
-      <div
-        id="collapsePages"
-        class="collapse show"
-        aria-labelledby="headingPages"
-        data-parent="#accordionSidebar"
-      >
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Login Screens:</h6>
-          <a class="collapse-item" href="login.html">Login</a>
-          <a class="collapse-item" href="register.html">Register</a>
-          <a class="collapse-item" href="forgot-password.html"
-            >Forgot Password</a
+          <!-- Скрывающаяся часть -->
+          <b-collapse
+            v-if="element.childGroups"
+            :id="element.name"
+            class="collapse show"
           >
-          <div class="collapse-divider"></div>
-          <h6 class="collapse-header">Other Pages:</h6>
-          <a class="collapse-item" href="404.html">404 Page</a>
-          <a class="collapse-item active" href="blank.html">Blank Page</a>
+            <div class="bg-white py-2 collapse-inner rounded">
+              <!-- Пункты меню второго уровня разбиты на группы, как и пункты меню первого уровня -->
+              <div
+                v-for="(childGroup, childGroupId) in element.childGroups"
+                :key="childGroupId"
+              >
+                <h6 class="collapse-header">{{childGroup.name}}:</h6>
+                <!-- Отображение самих пунктов меню второго уровня -->
+                <router-link
+                  v-for="(child, childId) in childGroup.childs"
+                  :key="childId"
+                  class="collapse-item"
+                  :to="(child.url != '') ? child.url : '#'"
+                  :disabled="child.url == '#'"
+                  active-class="active"
+                >
+                  {{child.name}}
+                </router-link>
+              </div>
+            </div>
+          </b-collapse>
+
         </div>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider" />
       </div>
-    </li>
 
-    <!-- Nav Item - Charts -->
-    <li class="nav-item">
-      <a class="nav-link" href="charts.html">
-        <b-icon icon="bar-chart-line-fill"></b-icon>
-        <span>Charts</span></a
-      >
-    </li>
-
-    <!-- Nav Item - Tables -->
-    <li class="nav-item">
-      <a class="nav-link" href="tables.html">
-        <b-icon icon="table"></b-icon>
-        <span>Tables</span></a
-      >
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block" />
-
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-      <button class="rounded-circle border-0" id="sidebarToggle">
-        <b-icon icon="chevron-left"></b-icon>
-      </button>
-    </div>
-  </ul>
-</div>
+      <!-- Minimaze sidebar button -->
+      <div class="text-center d-none d-md-inline" role="tab">
+        <button class="rounded-circle border-0" id="sidebarToggle" v-b-toggle.accordion-1>
+          <b-icon icon="chevron-left"></b-icon>
+        </button>
+      </div>
+    </b-nav>
+  </b-collapse>
 </template>
 
 <script>
@@ -350,3 +208,10 @@ export default {
   })
 }
 </script>
+
+<style scoped>
+  .collapsed .when-closed,
+  .not-collapsed .when-opened {
+    display: none;
+  }
+</style>

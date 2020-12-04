@@ -4238,6 +4238,9 @@ input[type="button"].btn-block {
     padding-right: 0;
     padding-left: 0;
   }
+  .sidebar .nav-item .nav-link span.ribbon {
+    display: none;
+  }
 }
 
 @media (min-width: 768px) {
@@ -10425,7 +10428,6 @@ a:focus {
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
-  z-index: 1;
 }
 
 .sidebar .sidebar-brand .sidebar-brand-icon {
@@ -10486,6 +10488,11 @@ a:focus {
     font-size: 0.85rem;
     display: inline;
   }
+  .sidebar .nav-item .nav-link .ribbon {
+    float: right;
+    text-align: center;
+  }
+
   .sidebar .nav-item .nav-link[data-toggle="collapse"]::after {
     width: 1rem;
     text-align: center;
