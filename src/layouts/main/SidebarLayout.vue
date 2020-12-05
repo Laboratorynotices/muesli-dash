@@ -1,5 +1,8 @@
 <template>
-  <b-nav class="bg-gradient-primary navbar-nav sidebar sidebar-dark">
+  <b-nav
+    class="bg-gradient-primary navbar-nav sidebar sidebar-dark"
+    :class="(sidebarToggled) ? 'toggled' : ''"
+  >
     <!-- Sidebar - Brand -->
     <b-navbar-brand
       href="#"
@@ -44,8 +47,8 @@
           <b-icon :icon="element.icon"></b-icon>
           <span>{{ element.name }}</span>
           <span class="ribbon" v-if="element.childGroups">
-            <b-icon icon="chevron-right" class="when-opened"></b-icon>
-            <b-icon icon="chevron-down" class="when-closed"></b-icon>
+            <b-icon v-if="!sidebarToggled" icon="chevron-right" class="when-opened"></b-icon>
+            <b-icon v-if="!sidebarToggled" icon="chevron-down" class="when-closed"></b-icon>
           </span>
         </b-nav-item>
 
@@ -87,9 +90,10 @@
       <button
         class="rounded-circle border-0"
         id="sidebarToggle"
-        v-b-toggle.accordion-1
+        @click="sidebarToggled = !sidebarToggled"
       >
-        <b-icon icon="chevron-left"></b-icon>
+        <b-icon v-if="!sidebarToggled" icon="chevron-left"></b-icon>
+        <b-icon v-else icon="chevron-right"></b-icon>
       </button>
     </div>
   </b-nav>
@@ -210,7 +214,8 @@ export default {
           }
         ]
       }
-    ]
+    ],
+    sidebarToggled: false
   })
 }
 </script>
