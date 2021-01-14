@@ -20,7 +20,7 @@ const routes = [
   },
   // Блок с основным (main) лайоутом.
   {
-    path: '/blank',
+    path: '/pages/blank',
     name: 'Blank',
     meta: { layout: 'main' },
     component: () => import('@/views/Blank.vue')

@@ -40,8 +40,9 @@
         <b-nav-item
           active-class="active"
           class="my-0"
+          :class="(currentRoute == element.url || currentRoute.indexOf(element.url)==0) ? 'active' : ''"
           v-b-toggle="element.childGroups ? element.name : ''"
-          :to="element.url != '' ? element.url : '#'"
+          :to="element.url != '' && !element.childGroups ? element.url : '#'"
           :disabled="element.url == '#'"
         >
           <b-icon :icon="element.icon"></b-icon>
@@ -54,6 +55,7 @@
 
         <!-- Скрывающаяся часть -->
         <b-collapse
+          :visible="currentRoute == element.url || currentRoute.indexOf(element.url)==0"
           v-if="element.childGroups"
           :id="element.name"
           class="collapse show"
@@ -169,6 +171,7 @@ export default {
           {
             name: 'Pages',
             icon: 'folder-fill',
+            url: '/pages',
             childGroups: [
               {
                 name: 'login screens:',
@@ -196,7 +199,7 @@ export default {
                   },
                   {
                     name: 'Blank Page',
-                    url: '/blank'
+                    url: '/pages/blank'
                   }
                 ]
               }
@@ -215,7 +218,8 @@ export default {
         ]
       }
     ],
-    sidebarToggled: false
+    sidebarToggled: false, // По умолчанию боковая панель не уменьшена
+    currentRoute: window.location.pathname // место для хранения URL
   })
 }
 </script>

@@ -24,7 +24,7 @@ export default {
     links: [
       { name: 'Übersicht', url: '/' },
       { name: 'Login', url: '/login' },
-      { name: 'Blank', url: '/blank' }
+      { name: 'Blank', url: '/pages/blank' }
     ]
   })
 }
