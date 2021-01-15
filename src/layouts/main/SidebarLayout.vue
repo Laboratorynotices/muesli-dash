@@ -218,9 +218,12 @@ export default {
         ]
       }
     ],
-    sidebarToggled: false, // По умолчанию боковая панель не уменьшена
+    sidebarToggled2: false, // По умолчанию боковая панель отображается полностью
     currentRoute: window.location.pathname // место для хранения URL
-  })
+  }),
+  props: {
+    sidebarToggled: Boolean
+  }
 }
 </script>
 

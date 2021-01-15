@@ -3,7 +3,9 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
       <!-- Sidebar -->
-      <sidebarLayout />
+      <sidebarLayout
+        :sidebarToggled="sidebarLayoutToggled"
+      />
       <!-- End of Sidebar -->
 
       <!-- Content Wrapper -->
@@ -11,7 +13,7 @@
         <!-- Main Content -->
         <div id="content">
           <!-- Topbar -->
-          <topbarLayout />
+          <topbarLayout @sidebarToggleTopCliked="sidebarLayoutToggle" />
           <!-- End of Topbar -->
 
           <!-- Begin Page Content -->
@@ -46,6 +48,14 @@ import TopbarLayout from '@/layouts/main/TopbarLayout.vue'
 
 export default {
   name: 'MainLayout',
+  data: () => ({
+    sidebarLayoutToggled: false // По умолчанию боковая панель отображается полностью
+  }),
+  methods: {
+    sidebarLayoutToggle () {
+      this.sidebarLayoutToggled = !this.sidebarLayoutToggled
+    }
+  },
   components: {
     FooterLayout,
     LogoutModal,

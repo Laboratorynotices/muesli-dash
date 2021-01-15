@@ -6,9 +6,8 @@
     <button
       id="sidebarToggleTop"
       class="btn btn-link d-md-none rounded-circle mr-3"
-    >
-      <b-icon-list />
-    </button>
+      v-on:click="sidebarToggleTopCliked"
+    ><b-icon-list shift-h="-2" shift-v="0.5" /></button>
 
     <!-- Topbar Search -->
     <topbarSearch />
@@ -271,6 +270,11 @@ export default {
   name: 'Topbar',
   components: {
     TopbarSearch
+  },
+  methods: {
+    sidebarToggleTopCliked () {
+      this.$emit('sidebarToggleTopCliked')
+    }
   }
 }
 </script>
