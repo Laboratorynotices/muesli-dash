@@ -1,6 +1,6 @@
 <template>
     <b-nav-form
-      form-class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+      :form-class="getFormClass (displayIn)"
       @submit.stop.prevent="alert('Form Submitted')"
     >
       <b-input-group>
@@ -20,3 +20,30 @@
       </b-input-group>
     </b-nav-form>
 </template>
+
+<script>
+export default {
+  name: 'TopbarSearch',
+  props: {
+    displayIn: {
+      validator: function (value) {
+        // The value must match one of these strings
+        return ['Topbar', 'Navbar'].indexOf(value) !== -1
+      }
+    }
+  },
+  methods: {
+    getFormClass (displayIn) {
+      console.log(displayIn)
+      // Default value, for 'Topbar'
+      let formClass = 'd-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search'
+
+      if (displayIn === 'Navbar') {
+        formClass = 'form-inline mr-auto w-100 navbar-search'
+      }
+
+      return formClass
+    }
+  }
+}
+</script>
