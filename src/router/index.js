@@ -5,6 +5,7 @@ import Home from '../views/Home.vue'
 Vue.use(VueRouter)
 
 const routes = [
+  // Список "рабочих" страниц
   {
     path: '/',
     name: 'Home',
@@ -17,6 +18,13 @@ const routes = [
     name: 'Login',
     meta: { layout: 'empty' },
     component: () => import('@/views/Login.vue')
+  },
+  // Блок с обзорной панелью (Dashboard) в нормальном лайоуте.
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    meta: { layout: 'main' },
+    component: () => import('@/views/Dashboard.vue')
   },
   // Блок с основным (main) лайоутом.
   {

@@ -110,7 +110,7 @@ export default {
           {
             name: 'Dashboard',
             icon: 'gem',
-            url: '#'
+            url: '/dashboard'
           }
         ]
       },

@@ -14,7 +14,13 @@
     </b-nav>
 
     <p>Это приложение создано в первую очередь для ознакомления с Vue и Bootstrap-Vue.</p>
-    <p><a href="https://github.com/Laboratorynotices/muesli-dash" target="_blank">Ссылка на код в GitHub.</a></p>
+    <p>
+      <b-link
+        href="https://github.com/Laboratorynotices/muesli-dash"
+        target="_blank">
+        Ссылка на код в GitHub.
+      </b-link>
+    </p>
   </div>
 </template>
 
@@ -25,6 +31,7 @@ export default {
     links: [
       { name: 'Overview', url: '/' },
       { name: 'Login', url: '/login' },
+      { name: 'Dashboard', url: '/dashboard' },
       { name: 'Error page 404', url: '/pages/404' },
       { name: 'Blank', url: '/pages/blank' }
     ]
