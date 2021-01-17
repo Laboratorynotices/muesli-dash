@@ -14,6 +14,7 @@
     </b-nav>
 
     <p>Это приложение создано в первую очередь для ознакомления с Vue и Bootstrap-Vue.</p>
+    <p><a href="https://github.com/Laboratorynotices/muesli-dash" target="_blank">Ссылка на код в GitHub.</a></p>
   </div>
 </template>
 
