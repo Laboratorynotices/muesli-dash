@@ -24,6 +24,14 @@ const routes = [
     name: 'Blank',
     meta: { layout: 'main' },
     component: () => import('@/views/Blank.vue')
+  },
+
+  // Блок с основным (main) лайоутом.
+  {
+    path: '*',
+    name: '404',
+    meta: { layout: 'main' },
+    component: () => import('@/views/404.vue')
   }
 ]
 

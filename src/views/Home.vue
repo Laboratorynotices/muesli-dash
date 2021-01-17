@@ -22,8 +22,9 @@ export default {
   name: 'Home',
   data: () => ({
     links: [
-      { name: 'Übersicht', url: '/' },
+      { name: 'Overview', url: '/' },
       { name: 'Login', url: '/login' },
+      { name: 'Error page 404', url: '/pages/404' },
       { name: 'Blank', url: '/pages/blank' }
     ]
   })

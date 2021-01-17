@@ -178,7 +178,7 @@ export default {
                 childs: [
                   {
                     name: 'Login',
-                    url: '#'
+                    url: '/login'
                   },
                   {
                     name: 'Register',
@@ -195,7 +195,7 @@ export default {
                 childs: [
                   {
                     name: '404 Page',
-                    url: '#'
+                    url: '/pages/404'
                   },
                   {
                     name: 'Blank Page',
