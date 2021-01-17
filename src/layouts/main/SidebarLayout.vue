@@ -5,7 +5,7 @@
   >
     <!-- Sidebar - Brand -->
     <b-navbar-brand
-      href="#"
+      href="/"
       class="sidebar-brand d-flex align-items-center justify-content-center"
     >
       <b-icon
