@@ -1,5 +1,8 @@
 <template>
-  <div class="container-fluid">
+  <div
+    id="dashboard"
+    class="container-fluid"
+  >
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
       <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
@@ -23,79 +26,97 @@
     </b-row>
 
     <!-- Content Row -->
+    <div class="row">
+      <!-- Area Chart -->
+      <div class="col-xl-8 col-lg-7">
+        <b-card
+          class="shadow mb-4"
+          no-body
+        >
+          <!-- Card Header - Dropdown -->
+          <b-card-header
+            class="py-3 d-flex flex-row align-items-center justify-content-between"
+          >
+            <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+            <b-dropdown
+              no-caret
+              size="sm"
+              right
+            >
+              <template
+                #button-content
+                button-class="border-0"
+              >
+                <b-icon-three-dots-vertical class="text-gray-400" />
+              </template>
+              <b-dropdown-group header="Dropdown Header:">
+                <b-dropdown-item href="#">Action</b-dropdown-item>
+                <b-dropdown-item href="#">Another action</b-dropdown-item>
+              </b-dropdown-group>
+              <b-dropdown-divider></b-dropdown-divider>
+              <b-dropdown-item href="#">Something else here</b-dropdown-item>
+            </b-dropdown>
+          </b-card-header>
+          <!-- Card Body -->
+          <b-card-body>
+            <LineChart class="chart-area" />
+          </b-card-body>
+        </b-card>
+      </div>
 
-          <div class="row">
-
-            <!-- Area Chart -->
-            <div class="col-xl-8 col-lg-7">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                  <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </div>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="chart-area"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                    <canvas id="myAreaChart" style="display: block; width: 668px; height: 320px;" width="668" height="320" class="chartjs-render-monitor"></canvas>
-                  </div>
-                </div>
-              </div>
+      <!-- Pie Chart -->
+      <div class="col-xl-4 col-lg-5">
+        <b-card
+          class="shadow mb-4"
+          no-body
+        >
+          <!-- Card Header - Dropdown -->
+          <b-card-header
+            class="py-3 d-flex flex-row align-items-center justify-content-between"
+          >
+            <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+            <b-dropdown
+              no-caret
+              size="sm"
+              right
+            >
+              <template
+                #button-content
+                button-class="border-0"
+              >
+                <b-icon-three-dots-vertical class="text-gray-400" />
+              </template>
+              <b-dropdown-group header="Dropdown Header:">
+                <b-dropdown-item href="#">Action</b-dropdown-item>
+                <b-dropdown-item href="#">Another action</b-dropdown-item>
+              </b-dropdown-group>
+              <b-dropdown-divider></b-dropdown-divider>
+              <b-dropdown-item href="#">Something else here</b-dropdown-item>
+            </b-dropdown>
+          </b-card-header>
+          <!-- Card Body -->
+          <b-card-body>
+            <PieChart class="chart-pie pt-4 pb-2" />
+            <div class="mt-4 text-center small">
+              <span class="mr-2">
+                <b-icon-circle-fill class="text-primary" /> Direct
+              </span>
+              <span class="mr-2">
+                <b-icon-circle-fill class="text-success" /> Social
+              </span>
+              <span class="mr-2">
+                <b-icon-circle-fill class="text-info" /> Referral
+              </span>
             </div>
+          </b-card-body>
+        </b-card>
+      </div>
+    </div>
 
-            <!-- Pie Chart -->
-            <div class="col-xl-4 col-lg-5">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                  <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </div>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="chart-pie pt-4 pb-2"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                    <canvas id="myPieChart" style="display: block; width: 301px; height: 245px;" width="301" height="245" class="chartjs-render-monitor"></canvas>
-                  </div>
-                  <div class="mt-4 text-center small">
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> Direct
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> Social
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-info"></i> Referral
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    <hr class="sidebar-divider" />
 
-          <!-- Content Row -->
-          <div class="row">
+    <!-- Content Row -->
+    <div class="row">
 
             <!-- Content Column -->
             <div class="col-lg-6 mb-4">
@@ -233,11 +254,15 @@
 
 <script>
 import ContentRowCard from './dashboard/ContentRowCard.vue'
+import LineChart from './dashboard/LineChart.vue'
+import PieChart from './dashboard/PieChart.vue'
 
 export default {
   name: 'Dashboard',
   components: {
-    ContentRowCard
+    ContentRowCard,
+    LineChart,
+    PieChart
   },
   data: () => ({
     contentRowCards: [
@@ -269,4 +294,10 @@ export default {
     ]
   })
 }
+
 </script>
+
+<style scoped>
+/* chart.css */
+@import '~chart.js/dist/Chart.css';
+</style>

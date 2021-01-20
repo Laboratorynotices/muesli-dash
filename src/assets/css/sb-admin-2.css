@@ -10674,6 +10674,16 @@ a:focus {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
+#dashboard button.btn {
+  background-color: transparent !important;
+  border: none;
+  padding: 0;
+}
+
+#dashboard button.btn:focus {
+  box-shadow: none !important;
+}
+
 .btn-circle {
   border-radius: 100%;
   height: 2.5rem;
