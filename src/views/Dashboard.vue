@@ -116,7 +116,7 @@
     <!-- Content Row -->
     <b-row>
       <!-- Content Column -->
-      <b-col class="col-lg-6 mb-4">
+      <b-col class="col-12 col-lg-6 mb-4">
 
         <!-- Project Card Example -->
         <ProjectCard />
@@ -125,7 +125,7 @@
         <ColorSystemCols />
       </b-col>
 
-      <b-col class="col-lg-6 mb-4">
+      <b-col class="col-12 col-lg-6 mb-4">
         <!-- Illustrations -->
         <b-card
           class="shadow mb-4"

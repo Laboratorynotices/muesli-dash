@@ -31,9 +31,7 @@
     <!-- End of Page Wrapper -->
 
     <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fas fa-angle-up"></i>
-    </a>
+    <ScrollToTopButton />
 
     <!-- Logout Modal-->
     <logoutModal />
@@ -43,6 +41,7 @@
 <script>
 import FooterLayout from '@/layouts/main/FooterLayout.vue'
 import LogoutModal from '@/layouts/main/LogoutModal.vue'
+import ScrollToTopButton from '@/layouts/main/ScrollToTopButton.vue'
 import SidebarLayout from '@/layouts/main/SidebarLayout.vue'
 import TopbarLayout from '@/layouts/main/TopbarLayout.vue'
 
@@ -59,8 +58,10 @@ export default {
   components: {
     FooterLayout,
     LogoutModal,
+    ScrollToTopButton,
     SidebarLayout,
     TopbarLayout
   }
 }
+
 </script>
