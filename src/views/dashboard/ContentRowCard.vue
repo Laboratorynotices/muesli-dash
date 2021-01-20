@@ -30,16 +30,16 @@
               </div>
             </div>
             <div class="col">
-              <div class="progress progress-sm mr-2">
-                <div
-                  class="progress-bar bg-info"
-                  role="progressbar"
-                  :style="'width: '+progressbar+'%'"
-                  :aria-valuenow="progressbar"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
+              <b-progress
+                :max="100"
+                :min="0"
+                class="progress-sm mr-2"
+              >
+                <b-progress-bar
+                  class="bg-info"
+                  :value="progressbar"
+                />
+              </b-progress>
             </div>
           </div>
         </b-col>
