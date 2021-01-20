@@ -31,7 +31,7 @@
         <b-progress
           :max="maxValue"
           :min="minValue"
-          class="mb-4"
+          :class="(key + 1 < progressBars.length) ? 'mb-4' : ''"
         >
           <b-progress-bar
             :class="progressBar.class"
