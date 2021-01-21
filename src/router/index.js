@@ -34,6 +34,14 @@ const routes = [
     component: () => import('@/views/Blank.vue')
   },
 
+  // Калькулятор смесителя мюсли
+  {
+    path: '/muesli',
+    name: 'MuesliMixer',
+    meta: { layout: 'main' },
+    component: () => import('@/views/MuesliMixer.vue')
+  },
+
   // Блок с основным (main) лайоутом.
   {
     path: '*',

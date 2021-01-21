@@ -30,6 +30,7 @@ export default {
   data: () => ({
     links: [
       { name: 'Overview', url: '/' },
+      { name: 'Müsli Mixer', url: '/muesli' },
       { name: 'Login', url: '/login' },
       { name: 'Dashboard', url: '/dashboard' },
       { name: 'Error page 404', url: '/pages/404' },

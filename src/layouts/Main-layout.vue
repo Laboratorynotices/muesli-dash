@@ -4,7 +4,7 @@
     <div id="wrapper">
       <!-- Sidebar -->
       <sidebarLayout
-        :sidebarToggled="sidebarLayoutToggled"
+        :sidebarToggleCliсked="sidebarToggleCliсked"
       />
       <!-- End of Sidebar -->
 
@@ -13,7 +13,7 @@
         <!-- Main Content -->
         <div id="content">
           <!-- Topbar -->
-          <topbarLayout @sidebarToggleTopCliked="sidebarLayoutToggle" />
+          <topbar-layout @sidebarToggleTopCliсked="sidebarToggleTopCliсked" />
           <!-- End of Topbar -->
 
           <!-- Begin Page Content -->
@@ -48,11 +48,13 @@ import TopbarLayout from '@/layouts/main/TopbarLayout.vue'
 export default {
   name: 'MainLayout',
   data: () => ({
-    sidebarLayoutToggled: false // По умолчанию боковая панель отображается полностью
+    // Значение этой переменной не важно, главное отслеживать было ли изменено её значения.
+    sidebarToggleCliсked: false
   }),
   methods: {
-    sidebarLayoutToggle () {
-      this.sidebarLayoutToggled = !this.sidebarLayoutToggled
+    // Меняем значение переменной. (Нажали на кнопку в шапке.)
+    sidebarToggleTopCliсked () {
+      this.sidebarToggleCliсked = !this.sidebarToggleCliсked
     }
   },
   components: {
@@ -62,6 +64,11 @@ export default {
     SidebarLayout,
     TopbarLayout
   }
+/* ,
+  updated () {
+    console.log('updated')
+  }
+*/
 }
 
 </script>
