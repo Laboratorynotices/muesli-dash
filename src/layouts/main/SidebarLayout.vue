@@ -40,7 +40,7 @@
         <b-nav-item
           active-class="active"
           class="my-0"
-          :class="(currentRoute == element.url || currentRoute.indexOf(element.url)==0) ? 'active' : ''"
+          :class="isRouteActive(element.url) ? 'active' : ''"
           v-b-toggle="element.childGroups ? element.name : ''"
           :to="element.url != '' && !element.childGroups ? element.url : '#'"
           :disabled="element.url == '#'"
@@ -55,7 +55,7 @@
 
         <!-- Скрывающаяся часть -->
         <b-collapse
-          :visible="currentRoute == element.url || currentRoute.indexOf(element.url)==0"
+          :visible="isRouteActive (element.url)"
           v-if="element.childGroups"
           :id="element.name"
           class="collapse show"
@@ -89,14 +89,19 @@
 
     <!-- Minimaze sidebar button -->
     <div class="text-center d-none d-md-inline">
-      <button
+      <b-button
         class="rounded-circle border-0"
         id="sidebarToggle"
         @click="sidebarToggled = !sidebarToggled"
+        variant="none"
       >
-        <b-icon v-if="!sidebarToggled" icon="chevron-left"></b-icon>
+        <b-icon
+          v-if="!sidebarToggled"
+          icon="chevron-left"
+          shift-h="-2"
+        ></b-icon>
         <b-icon v-else icon="chevron-right"></b-icon>
-      </button>
+      </b-button>
     </div>
   </b-nav>
 </template>
@@ -104,7 +109,17 @@
 <script>
 export default {
   data: () => ({
+    // Данные, на основе которых будет генерироваться меню
     menuElementsGroups: [
+      {
+        elemets: [
+          {
+            name: 'Müsli Mixer',
+            icon: 'shop',
+            url: '/muesli'
+          }
+        ]
+      },
       {
         elemets: [
           {
@@ -218,11 +233,32 @@ export default {
         ]
       }
     ],
-    sidebarToggled2: false, // По умолчанию боковая панель отображается полностью
-    currentRoute: window.location.pathname // место для хранения URL
+    // Должно ли меню быть скрытым или нет
+    sidebarToggled: false
   }),
   props: {
-    sidebarToggled: Boolean
+    // Благодаря этой переменной будем остлеживать была ли нажата кнопка в шапке.
+    sidebarToggleCliсked: Boolean
+  },
+  methods: {
+    isRouteActive (url) {
+      // место для хранения URL
+      const currentRoute = window.location.pathname
+
+      // элемент сошёлся
+      if (currentRoute === url) {
+        return true
+      }
+
+      // console.log(url)
+      // ( || (currentRoute.indexOf(element.url)==0))
+      return false
+    }
+  },
+  watch: {
+    sidebarToggleCliсked () {
+      this.sidebarToggled = !this.sidebarToggled
+    }
   }
 }
 </script>

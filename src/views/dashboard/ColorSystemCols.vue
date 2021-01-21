@@ -1,7 +1,7 @@
 <template>
   <b-row>
     <b-col
-      class="col-lg-6 mb-4"
+      class="col-12 col-lg-6 mb-4"
       v-for="(colorSystem, key) in colorSystemCols"
       :key="key"
     >
