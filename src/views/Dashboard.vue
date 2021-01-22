@@ -28,7 +28,7 @@
     <!-- Content Row -->
     <b-row>
       <!-- Area Chart -->
-      <div class="col-xl-8 col-lg-7">
+      <b-col class="col-xl-8 col-lg-7 col-12">
         <b-card
           class="shadow mb-4"
           no-body
@@ -62,10 +62,10 @@
             <LineChart class="chart-area" />
           </b-card-body>
         </b-card>
-      </div>
+      </b-col>
 
       <!-- Pie Chart -->
-      <div class="col-xl-4 col-lg-5">
+      <b-col class="col-xl-4 col-lg-5 col-12">
         <b-card
           class="shadow mb-4"
           no-body
@@ -110,13 +110,13 @@
             </div>
           </b-card-body>
         </b-card>
-      </div>
+      </b-col>
     </b-row>
 
     <!-- Content Row -->
     <b-row>
       <!-- Content Column -->
-      <b-col class="col-lg-6 mb-4">
+      <b-col class="col-12 col-lg-6 mb-4">
 
         <!-- Project Card Example -->
         <ProjectCard />
@@ -125,7 +125,7 @@
         <ColorSystemCols />
       </b-col>
 
-      <b-col class="col-lg-6 mb-4">
+      <b-col class="col-12 col-lg-6 mb-4">
         <!-- Illustrations -->
         <b-card
           class="shadow mb-4"

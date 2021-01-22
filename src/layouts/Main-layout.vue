@@ -4,7 +4,7 @@
     <div id="wrapper">
       <!-- Sidebar -->
       <sidebarLayout
-        :sidebarToggled="sidebarLayoutToggled"
+        :sidebarToggleCliсked="sidebarToggleCliсked"
       />
       <!-- End of Sidebar -->
 
@@ -13,7 +13,7 @@
         <!-- Main Content -->
         <div id="content">
           <!-- Topbar -->
-          <topbarLayout @sidebarToggleTopCliked="sidebarLayoutToggle" />
+          <topbar-layout @sidebarToggleTopCliсked="sidebarToggleTopCliсked" />
           <!-- End of Topbar -->
 
           <!-- Begin Page Content -->
@@ -31,9 +31,7 @@
     <!-- End of Page Wrapper -->
 
     <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fas fa-angle-up"></i>
-    </a>
+    <ScrollToTopButton />
 
     <!-- Logout Modal-->
     <logoutModal />
@@ -43,24 +41,34 @@
 <script>
 import FooterLayout from '@/layouts/main/FooterLayout.vue'
 import LogoutModal from '@/layouts/main/LogoutModal.vue'
+import ScrollToTopButton from '@/layouts/main/ScrollToTopButton.vue'
 import SidebarLayout from '@/layouts/main/SidebarLayout.vue'
 import TopbarLayout from '@/layouts/main/TopbarLayout.vue'
 
 export default {
   name: 'MainLayout',
   data: () => ({
-    sidebarLayoutToggled: false // По умолчанию боковая панель отображается полностью
+    // Значение этой переменной не важно, главное отслеживать было ли изменено её значения.
+    sidebarToggleCliсked: false
   }),
   methods: {
-    sidebarLayoutToggle () {
-      this.sidebarLayoutToggled = !this.sidebarLayoutToggled
+    // Меняем значение переменной. (Нажали на кнопку в шапке.)
+    sidebarToggleTopCliсked () {
+      this.sidebarToggleCliсked = !this.sidebarToggleCliсked
     }
   },
   components: {
     FooterLayout,
     LogoutModal,
+    ScrollToTopButton,
     SidebarLayout,
     TopbarLayout
   }
+/* ,
+  updated () {
+    console.log('updated')
+  }
+*/
 }
+
 </script>
