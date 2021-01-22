@@ -1,5 +1,6 @@
 <template>
   <div id="page-top">
+
     <!-- Page Wrapper -->
     <div id="wrapper">
       <!-- Sidebar -->
@@ -13,7 +14,7 @@
         <!-- Main Content -->
         <div id="content">
           <!-- Topbar -->
-          <topbar-layout @sidebarToggleTopCliсked="sidebarToggleTopCliсked" />
+          <topbar-layout @sidebarToggle="sidebarToggle" />
           <!-- End of Topbar -->
 
           <!-- Begin Page Content -->
@@ -53,7 +54,7 @@ export default {
   }),
   methods: {
     // Меняем значение переменной. (Нажали на кнопку в шапке.)
-    sidebarToggleTopCliсked () {
+    sidebarToggle () {
       this.sidebarToggleCliсked = !this.sidebarToggleCliсked
     }
   },

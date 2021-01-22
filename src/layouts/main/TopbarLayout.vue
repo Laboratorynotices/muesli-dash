@@ -2,11 +2,12 @@
   <nav
     class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
   >
+
     <!-- Sidebar Toggle (Topbar) -->
     <b-button
       id="sidebarToggleTop"
       class="btn btn-link d-md-none rounded-circle mr-3"
-      @click="$emit('sidebarToggleTopCliсked')"
+      @click="clicked"
       variant="none"
     ><b-icon-list shift-h="-2" shift-v="0.5" /></b-button>
 
@@ -30,9 +31,9 @@ export default {
     TopbarSearch
   },
   methods: {
-    sidebarToggleCliсked () {
+    clicked () {
       console.log('sidebarToggleCliсked')
-      this.$emit('sidebarToggleTopCliсked')
+      this.$emit('sidebarToggle')
     }
   }
   /*,
