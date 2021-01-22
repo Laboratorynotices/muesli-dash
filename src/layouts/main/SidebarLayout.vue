@@ -245,13 +245,16 @@ export default {
       // место для хранения URL
       const currentRoute = window.location.pathname
 
-      // элемент сошёлся
+      // элемент сошёлся полностью
       if (currentRoute === url) {
         return true
       }
 
-      // console.log(url)
-      // ( || (currentRoute.indexOf(element.url)==0))
+      if (currentRoute.indexOf(url) === 0) {
+        console.log(url)
+        return true
+      }
+
       return false
     }
   },

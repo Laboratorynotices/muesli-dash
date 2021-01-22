@@ -6,6 +6,7 @@
       <!-- Sidebar -->
       <sidebarLayout
         :sidebarToggleCliсked="sidebarToggleCliсked"
+        :key="menuKey"
       />
       <!-- End of Sidebar -->
 
@@ -50,12 +51,20 @@ export default {
   name: 'MainLayout',
   data: () => ({
     // Значение этой переменной не важно, главное отслеживать было ли изменено её значения.
-    sidebarToggleCliсked: false
+    sidebarToggleCliсked: false,
+    // Оригинальный URL
+    oldRoute: '', // window.location.pathname,
+    // Ключ для обновления SidebarLayout (меню)
+    menuKey: 0
   }),
   methods: {
     // Меняем значение переменной. (Нажали на кнопку в шапке.)
     sidebarToggle () {
       this.sidebarToggleCliсked = !this.sidebarToggleCliсked
+    },
+    // Получаем URL-страницы
+    getURL () {
+      return this.$route.path
     }
   },
   components: {
@@ -64,12 +73,23 @@ export default {
     ScrollToTopButton,
     SidebarLayout,
     TopbarLayout
-  }
-/* ,
+  },
+  created () {
+    // Запоминаем первоначальный URL-адрес
+    this.oldRoute = this.getURL()
+  },
   updated () {
-    console.log('updated')
+    // место для хранения нового URL
+    const currentRoute = this.getURL()
+
+    console.log('oldRoute: ' + this.oldRoute)
+    console.log('currentRoute: ' + currentRoute)
+
+    if (this.oldRoute !== currentRoute) {
+      this.oldRoute = currentRoute
+      this.menuKey += 1
+    }
   }
-*/
 }
 
 </script>

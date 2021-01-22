@@ -9839,6 +9839,11 @@ a:focus {
   }
 }
 
+.sidebar .nav-item .collapse {
+  position: absolute;
+  z-index: 1;
+}
+
 .animated--grow-in, .sidebar .nav-item .collapse {
   -webkit-animation-name: growIn;
   animation-name: growIn;
