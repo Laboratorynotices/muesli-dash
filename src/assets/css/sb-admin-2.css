@@ -9841,7 +9841,7 @@ a:focus {
 
 .sidebar .nav-item .collapse {
   position: absolute;
-  z-index: 1;
+  z-index: 21;
 }
 
 .animated--grow-in, .sidebar .nav-item .collapse {

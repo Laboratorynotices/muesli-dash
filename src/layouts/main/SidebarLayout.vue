@@ -135,6 +135,7 @@ export default {
           {
             name: 'Components',
             icon: 'gear-fill',
+            url: '/components',
             childGroups: [
               {
                 name: 'custom components',
@@ -146,6 +147,10 @@ export default {
                   {
                     name: 'Cards',
                     url: '#'
+                  },
+                  {
+                    name: 'Carousel',
+                    url: '/components/carousel'
                   }
                 ]
               }

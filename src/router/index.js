@@ -26,6 +26,15 @@ const routes = [
     meta: { layout: 'main' },
     component: () => import('@/views/Dashboard.vue')
   },
+
+  // Разбираемся с каруселью
+  {
+    path: '/components/carousel',
+    name: 'Carousel',
+    meta: { layout: 'main' },
+    component: () => import('@/views/Carousel.vue')
+  },
+
   // Блок с основным (main) лайоутом.
   {
     path: '/pages/blank',
