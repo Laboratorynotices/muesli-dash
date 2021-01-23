@@ -76,7 +76,10 @@
           </b-card-header>
           <!-- Card Body -->
           <b-card-body>
-            Dropdown menus can be placed in the card header in order to extend the functionality of a basic card. In this dropdown card example, the Font Awesome vertical ellipsis icon in the card header can be clicked on in order to toggle a dropdown menu.
+            Dropdown menus can be placed in the card header in order to extend
+            the functionality of a basic card. In this dropdown card example,
+            the Font Awesome vertical ellipsis icon in the card header can be
+            clicked on in order to toggle a dropdown menu.
           </b-card-body>
         </b-card>
 
@@ -100,9 +103,53 @@
           </b-card-header>
           <b-collapse id="accordion-1" visible accordion="my-accordion" role="tabpanel">
             <b-card-body>
-              This is a collapsable card example using Bootstrap's built in collapse functionality. <strong>Click on the card header</strong> to see the card body collapse and expand!
+              This is a collapsable card example using Bootstrap's built in collapse functionality.
+              <strong>Click on the card header</strong>
+              to see the card body collapse and expand!
             </b-card-body>
           </b-collapse>
+        </b-card>
+      </b-col>
+    </b-row>
+
+    <!-- -->
+    <b-row>
+      <b-col
+        v-for="i in 3"
+        :key="i"
+        class="col-12 col-lg-4"
+      >
+        <b-card
+          title="Card Title"
+          :img-src="'https://picsum.photos/600/300/?image=3'+i"
+          img-bottom
+          tag="article"
+          class="shadow mb-4 col-12 px-0"
+        >
+          <b-card-text>
+            {{ i }} Some quick example text to build on the card title and make up the bulk of the card's content.
+            <b-button
+              href="#"
+              class="p-0 align-baseline text-primary"
+              v-b-modal="'modal-'+i"
+              variant="none"
+            >More...</b-button>
+
+            <b-modal
+              :id="'modal-'+i"
+              :title="'BootstrapVue'+i"
+              ok-only
+            >
+              <p class="my-4">Hello from modal! {{ i }}</p>
+            </b-modal>
+          </b-card-text>
+
+          <b-card-text>
+            <span class="fs-2"> {{ 2 + i }},99€</span>
+            <span class="align-top"> / 580 g</span>
+          </b-card-text>
+
+          <b-button href="#" variant="primary">Go somewhere</b-button>
         </b-card>
       </b-col>
     </b-row>

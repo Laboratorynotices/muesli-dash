@@ -438,6 +438,14 @@ mark,
   background-color: #fcf8e3;
 }
 
+.fs-1 {
+  font-size: 3em;
+}
+
+.fs-2 {
+  font-size: 1.5em;
+}
+
 .list-unstyled {
   padding-left: 0;
   list-style: none;
