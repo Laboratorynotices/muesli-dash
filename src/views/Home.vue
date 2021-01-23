@@ -3,14 +3,21 @@
     <h3>Привязанные странички</h3>
 
     <b-nav vertical pills>
-      <b-nav-item
-        v-for="link in links"
-        :key="link.url"
-        :to="link.url"
-        active-class="active"
+      <div
+        v-for="(link, index) in links"
+        :key="index"
       >
-        {{link.name}}
-      </b-nav-item>
+        <!-- Создаём ссылку из списка -->
+        <b-nav-item
+          v-if="'url' in link && link.url !== '#'"
+          :to="link.url"
+          active-class="active"
+        >
+          {{link.name}}
+        </b-nav-item>
+        <!-- Разделитель -->
+        <hr v-else />
+      </div>
     </b-nav>
 
     <p>Это приложение создано в первую очередь для ознакомления с Vue и Bootstrap-Vue.</p>
@@ -30,11 +37,16 @@ export default {
   data: () => ({
     links: [
       { name: 'Overview', url: '/' },
+      { name: 'hr' },
       { name: 'Müsli Mixer', url: '/muesli' },
+      { name: 'hr' },
       { name: 'Login', url: '/login' },
       { name: 'Dashboard', url: '/dashboard' },
+      { name: 'Cards', url: '/components/cards' },
+      { name: 'Carousel', url: '/components/carousel' },
       { name: 'Error page 404', url: '/pages/404' },
-      { name: 'Blank', url: '/pages/blank' }
+      { name: 'Blank', url: '/pages/blank' },
+      { name: 'hr' }
     ]
   })
 }

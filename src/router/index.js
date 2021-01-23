@@ -27,7 +27,15 @@ const routes = [
     component: () => import('@/views/Dashboard.vue')
   },
 
-  // Разбираемся с каруселью
+  // "Карточки"
+  {
+    path: '/components/cards',
+    name: 'Cards',
+    meta: { layout: 'main' },
+    component: () => import('@/views/Cards.vue')
+  },
+
+  // "Карусель"
   {
     path: '/components/carousel',
     name: 'Carousel',

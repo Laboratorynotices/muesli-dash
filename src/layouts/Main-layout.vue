@@ -82,9 +82,6 @@ export default {
     // место для хранения нового URL
     const currentRoute = this.getURL()
 
-    console.log('oldRoute: ' + this.oldRoute)
-    console.log('currentRoute: ' + currentRoute)
-
     if (this.oldRoute !== currentRoute) {
       this.oldRoute = currentRoute
       this.menuKey += 1

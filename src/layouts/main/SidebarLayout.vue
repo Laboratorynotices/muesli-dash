@@ -146,7 +146,7 @@ export default {
                   },
                   {
                     name: 'Cards',
-                    url: '#'
+                    url: '/components/cards'
                   },
                   {
                     name: 'Carousel',
@@ -256,7 +256,6 @@ export default {
       }
 
       if (currentRoute.indexOf(url) === 0) {
-        console.log(url)
         return true
       }
 
