@@ -39,16 +39,5 @@ export default {
     DefaultCarousel,
     MICarousel
   }
-  /*,
-  methods: {
-    clicked () {
-      console.log('sidebarToggleCliсked')
-      this.$emit('sidebarToggle')
-    }
-  } */
-  /*,
-  created () {
-    console.log('Top created')
-  } */
 }
 </script>

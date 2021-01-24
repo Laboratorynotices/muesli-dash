@@ -32,7 +32,6 @@ export default {
   },
   methods: {
     clicked () {
-      console.log('sidebarToggleCliсked')
       this.$emit('sidebarToggle')
     }
   }

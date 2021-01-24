@@ -112,7 +112,7 @@
       </b-col>
     </b-row>
 
-    <!-- -->
+    <!-- Custom Cards -->
     <b-row>
       <b-col
         v-for="i in 3"
