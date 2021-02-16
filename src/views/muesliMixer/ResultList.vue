@@ -14,6 +14,9 @@
       <b-row
         v-for="(portions, sortID) in sorts"
         :key="sortID"
+        title="Linke Maustaste hinzufügen / Rechte Maustaste entfernen"
+        @click="addToMuesliMix(sortID, groupID)"
+        @contextmenu.prevent="removeFromMuesliMix(sortID, groupID)"
       >
         <b-col
           class="c-12"
@@ -42,12 +45,33 @@
 
 <script>
 // import IngredientCard from './IngredientCard.vue'
+// Импортируем обменную шину
+import { EventBus } from '@/eventBus/eventBus.js'
 
 export default {
   name: 'ResultList',
   data: () => ({
   }),
   methods: {
+    /**
+     * Добавляем определённый ингридиент (сорт) в смесь.
+     * sortID - номер сорта, который надо добавить
+     * ingredientGroupID - номер группы, из которой надо добавить сорт
+     */
+    addToMuesliMix (sortID, ingredientGroupID) {
+      // Создаю событие и прибавляю его к каналу (addToMuesliMix) с данным добавляемого сорта
+      EventBus.$emit('addToMuesliMix', sortID, ingredientGroupID)
+    },
+    /**
+     * Уменьшаем определённый ингридиент (сорт) из смеси.
+     * sortID - номер сорта, который надо отнять
+     * ingredientGroupID - номер группы, из которой надо отнять сорт
+     */
+    removeFromMuesliMix (sortID, ingredientGroupID) {
+      // Создаю событие и прибавляю его к каналу (removeFromMuesliMix) с данным добавляемого сорта
+      EventBus.$emit('removeFromMuesliMix', sortID, ingredientGroupID)
+    },
+
     log (message) {
       console.log(message)
     }

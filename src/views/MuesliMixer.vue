@@ -646,8 +646,10 @@ export default {
     }
   }),
   methods: {
-    /*
+    /**
      * Добавляем определённый сорт в смесь.
+     * sortID - номер сорта, который надо добавить
+     * ingredientGroupID - номер группы, из которой надо добавить сорт
      */
     addToMuesliMix (sortID, ingredientGroupID) {
       if (ingredientGroupID in this.muesliMix) {
@@ -663,6 +665,33 @@ export default {
       } else {
         // Ни один ингридиент из этой группы ещё не был добавлен в смесь.
         this.muesliMix[ingredientGroupID] = { [sortID]: 1 }
+      }
+
+      // Обновление ключа для принудительного обновления компонента
+      this.resultKey++
+    },
+    /**
+     * Убираем определённый сорт из смеси.
+     * sortID - номер сорта, который надо убрать
+     * ingredientGroupID - номер группы, из которой надо убрать сорт
+     */
+    removeFromMuesliMix (sortID, ingredientGroupID) {
+      if (ingredientGroupID in this.muesliMix) {
+        // Что-то из этой группы было уже добавленно в смесь
+
+        if (sortID in this.muesliMix[ingredientGroupID]) {
+          // Этот сорт уже был добавлен в эту смесь
+
+          this.muesliMix[ingredientGroupID][sortID]--
+
+          if (this.muesliMix[ingredientGroupID][sortID] === 0) {
+            // Убираем "нулевые" значения
+            delete this.muesliMix[ingredientGroupID][sortID]
+            if (Object.keys(this.muesliMix[ingredientGroupID]).length === 0) {
+              delete this.muesliMix[ingredientGroupID]
+            }
+          }
+        }
       }
 
       // Обновление ключа для принудительного обновления компонента
@@ -724,6 +753,8 @@ export default {
   created: function () {
     // Слушаем события по каналу 'addToMuesliMix'
     EventBus.$on('addToMuesliMix', this.addToMuesliMix)
+    // Слушаем события по каналу 'removeFromMuesliMix'
+    EventBus.$on('removeFromMuesliMix', this.removeFromMuesliMix)
   },
   beforeUpdate () {
     this.calculateValuesInCart()
