@@ -1,7 +1,7 @@
 <template>
   <b-card
     :title="sort.name"
-    :img-src="'https://picsum.photos/600/300/?image='+6+index"
+    :img-src="'https://picsum.photos/600/300/?image='+sort.imageID"
     img-bottom
     tag="article"
     class="shadow mb-4 px-0"
@@ -12,21 +12,21 @@
       <b-button
         href="#"
         class="p-0 align-baseline text-primary"
-        v-b-modal="'modal-'+index"
+        v-b-modal="'modal-' + ingredientGroupID + '-' + index"
         variant="none"
       >More...</b-button>
 
       <b-modal
-        :id="'modal-'+index"
+        :id="'modal-' + ingredientGroupID + '-' + index"
         :title="sort.name"
         ok-only
       >
         <p>{{ sort.description }}</p>
         <p>
           <span class="fs-2"> {{ sort.price }}€</span>
-          <span class="align-top"> / {{ sort.portion }} g</span>
+          <span class="align-top"> / {{ sort.weight }} g</span>
         </p>
-        <p>Preis pro 100 g: {{ Math.round(sort.price / sort.portion * 100 * 100) / 100 }}€</p>
+        <p>Preis pro 100 g: {{ Math.round(sort.price / sort.weight * 100 * 100) / 100 }}€</p>
         <b-row class="pl-2">
           <b-col class="col-6">
             <b-row class="border-bottom">
@@ -79,7 +79,7 @@
           </b-col>
           <b-col class="col-6">
             <b-img
-              :src="'https://picsum.photos/600/300/?image='+6+index"
+              :src="'https://picsum.photos/600/300/?image='+sort.imageID"
               class="w-100"
             />
           </b-col>
@@ -89,7 +89,7 @@
 
     <b-card-text>
       <span class="fs-2"> {{ sort.price }}€</span>
-      <span class="align-top"> / {{ sort.portion }} g</span>
+      <span class="align-top"> / {{ sort.weight }} g</span>
     </b-card-text>
 
     <b-button
