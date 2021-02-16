@@ -14,6 +14,7 @@
           :ingredients="ingredients"
           :muesliMix="muesliMix"
           :resultKey="resultKey"
+          :resultListValues="resultListValues"
         />
       </b-col>
 
@@ -45,7 +46,7 @@ export default {
     ResultList
   },
   data: () => ({
-    // Составляемая смесь покупателем.
+    // Составляемая смесь покупателем. (Хранятся индексы)
     muesliMix: {},
     // Ингридиенты для приготовления мюсли
     ingredients: [
@@ -626,7 +627,23 @@ export default {
         ]
       }
     ],
-    resultKey: 0
+    // Ключ для принудительного обновления компонентов
+    resultKey: 0,
+    // Подсчитанные значения заказа (энергическая ценность, цена, жиры, углеводы и т.д.)
+    resultListValues: {
+      // Цена заказа в евро
+      price: 0,
+      // Энергическая ценность заказа в килокалориях
+      energy: 0,
+      // Жиры в граммах в заказе
+      fat: 0,
+      // Углеводы в граммах в заказе
+      carbohydrates: 0,
+      // Белки в граммах в заказе
+      protein: 0,
+      // Масса заказа
+      weight: 0
+    }
   }),
   methods: {
     /*
@@ -650,11 +667,66 @@ export default {
 
       // Обновление ключа для принудительного обновления компонента
       this.resultKey++
+    },
+    /*
+     * Подсчитывает пищевую ценность заказа,
+     * а так же его вес и цену в евро
+     */
+    calculateValuesInCart () {
+      this.resetValues()
+
+      // console.log(this.muesliMix)
+      for (const [groupID, sorts] of Object.entries(this.muesliMix)) {
+        // console.log('groupID: ' + groupID)
+
+        for (const [sortID, portions] of Object.entries(sorts)) {
+          // console.log(`${sortID}: ${portions}`)
+          this.resultListValues.price += portions * this.ingredients[groupID].sorts[sortID].price
+          // Пересчитываем ценности, поскольку они данны на 100г,
+          // а порции ингридиентов отличаются от этого
+          this.resultListValues.energy +=
+            portions *
+            this.ingredients[groupID].sorts[sortID].energy / 100 *
+            this.ingredients[groupID].sorts[sortID].weight
+          this.resultListValues.fat +=
+            portions *
+            this.ingredients[groupID].sorts[sortID].fat / 100 *
+            this.ingredients[groupID].sorts[sortID].weight
+          this.resultListValues.carbohydrates +=
+            portions *
+            this.ingredients[groupID].sorts[sortID].carbohydrates / 100 *
+            this.ingredients[groupID].sorts[sortID].weight
+          this.resultListValues.protein +=
+            portions *
+            this.ingredients[groupID].sorts[sortID].protein / 100 *
+            this.ingredients[groupID].sorts[sortID].weight
+          this.resultListValues.weight += portions * this.ingredients[groupID].sorts[sortID].weight
+        }
+      }
+
+      // console.log(this.resultListValues.weight)
+
+      // Конкретно скрываем "ошибку"
+      this.resultListValues.price = Math.round(this.resultListValues.price * 100) / 100
+    },
+    /*
+     * Сбрасываем данные нашего заказа
+     */
+    resetValues () {
+      this.resultListValues.price = 0
+      this.resultListValues.energy = 0
+      this.resultListValues.fat = 0
+      this.resultListValues.carbohydrates = 0
+      this.resultListValues.protein = 0
+      this.resultListValues.weight = 0
     }
   },
   created: function () {
     // Слушаем события по каналу 'addToMuesliMix'
     EventBus.$on('addToMuesliMix', this.addToMuesliMix)
+  },
+  beforeUpdate () {
+    this.calculateValuesInCart()
   }
 }
 </script>

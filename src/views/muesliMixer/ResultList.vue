@@ -20,7 +20,7 @@
         >
           {{ portions }}x {{ ingredients[groupID].sorts[sortID].name }}
           <b-img
-            :src="'https://picsum.photos/600/300/?image=' + ingredients[groupID].sorts[sortID].imageID"
+            :src="'https://picsum.photos/200/100/?image=' + ingredients[groupID].sorts[sortID].imageID"
             class="float-right rounded-circle d-inline"
             style="width: 20%;"
           />
@@ -29,12 +29,12 @@
     </b-card-body>
 
     <b-card-footer
-      v-if="weight > 0"
+      v-if="resultListValues.weight > 0"
       class="text-primary"
     >
-      {{ price }}€ / {{ weight }}g<br />
+      {{ resultListValues.price }}€ / {{ resultListValues.weight }}g<br />
       <small>
-        {{ Math.round(price/weight*100*100)/100 }}€ / 100g
+        {{ Math.round(resultListValues.price/resultListValues.weight*100*100)/100 }}€ / 100g
       </small>
     </b-card-footer>
   </b-card>
@@ -46,83 +46,17 @@
 export default {
   name: 'ResultList',
   data: () => ({
-    // Цена заказа в евро
-    price: 0,
-    // Энергическая ценность заказа в килокалориях
-    energy: 0,
-    // Жиры в граммах в заказе
-    fat: 0,
-    // Углеводы в граммах в заказе
-    carbohydrates: 0,
-    // Белки в граммах в заказе
-    protein: 0,
-    // Масса заказа
-    weight: 0
   }),
-  props: {
-    muesliMix: {},
-    ingredients: Array,
-    resultKey: Number
-  },
   methods: {
-    /*
-     * Подсчитывает пищевую ценность заказа,
-     * а так же его вес и цену в евро
-     */
-    calculateValuesInCart () {
-      this.resetValues()
-
-      // console.log(this.muesliMix)
-      for (const [groupID, sorts] of Object.entries(this.muesliMix)) {
-        console.log('groupID: ' + groupID)
-
-        for (const [sortID, portions] of Object.entries(sorts)) {
-          console.log(`${sortID}: ${portions}`)
-          this.price += portions * this.ingredients[groupID].sorts[sortID].price
-          // Пересчитываем ценности, поскольку они данны на 100г,
-          // а порции ингридиентов отличаются от этого
-          this.energy +=
-            portions *
-            this.ingredients[groupID].sorts[sortID].energy / 100 *
-            this.ingredients[groupID].sorts[sortID].weight
-          this.fat +=
-            portions *
-            this.ingredients[groupID].sorts[sortID].fat / 100 *
-            this.ingredients[groupID].sorts[sortID].weight
-          this.carbohydrates +=
-            portions *
-            this.ingredients[groupID].sorts[sortID].carbohydrates / 100 *
-            this.ingredients[groupID].sorts[sortID].weight
-          this.protein +=
-            portions *
-            this.ingredients[groupID].sorts[sortID].protein / 100 *
-            this.ingredients[groupID].sorts[sortID].weight
-          this.weight += portions * this.ingredients[groupID].sorts[sortID].weight
-        }
-      }
-
-      // Конкретно скрываем ошибку
-      this.price = Math.round(this.price * 100) / 100
-    },
-
-    /*
-     * Сбрасываем данные нашего заказа
-     */
-    resetValues () {
-      this.price = 0
-      this.energy = 0
-      this.fat = 0
-      this.carbohydrates = 0
-      this.protein = 0
-      this.weight = 0
-    },
-
     log (message) {
       console.log(message)
     }
   },
-  beforeUpdate () {
-    this.calculateValuesInCart()
+  props: {
+    muesliMix: {},
+    ingredients: Array,
+    resultKey: Number,
+    resultListValues: {}
   }
 }
 </script>
