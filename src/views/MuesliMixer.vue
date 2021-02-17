@@ -10,12 +10,19 @@
       <b-col
         class="col-12 col-md-6 col-lg-5 col-xl-4 mb-4 order-2 order-md-1"
       >
-        <ResultList
+        <result-list
           :ingredients="ingredients"
           :muesliMix="muesliMix"
           :resultKey="resultKey"
           :resultListValues="resultListValues"
         />
+
+        <macronutrients-card
+          :resultKey="resultKey"
+          :resultListValues="resultListValues"
+          v-if="resultListValues.weight > 0"
+        />
+
       </b-col>
 
       <!-- Müsli wählen -->
@@ -36,6 +43,8 @@
 <script>
 import Accordion from './muesliMixer/Accordion.vue'
 import ResultList from './muesliMixer/ResultList.vue'
+import MacronutrientsCard from './muesliMixer/MacronutrientsCard.vue'
+
 // Импортируем обменную шину
 import { EventBus } from '@/eventBus/eventBus.js'
 
@@ -43,6 +52,7 @@ export default {
   name: 'MuesliMixer',
   components: {
     Accordion,
+    MacronutrientsCard,
     ResultList
   },
   data: () => ({
