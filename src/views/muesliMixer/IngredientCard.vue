@@ -19,7 +19,6 @@
       <b-modal
         :id="'modal-' + ingredientGroupID + '-' + index"
         :title="sort.name"
-        ok-only
       >
         <p>{{ sort.description }}</p>
         <p>
@@ -84,6 +83,17 @@
             />
           </b-col>
         </b-row>
+
+        <template #modal-footer="{ hide, ok }">
+          <!-- Button with custom close trigger value -->
+          <b-button size="sm" variant="primary" @click="addToMuesliMix();hide()">
+            Hinzufügen
+          </b-button>
+          <!-- Emulate built in modal footer ok and cancel button actions -->
+          <b-button size="sm" variant="success" @click="ok()">
+            OK
+          </b-button>
+        </template>
       </b-modal>
     </b-card-text>
 
