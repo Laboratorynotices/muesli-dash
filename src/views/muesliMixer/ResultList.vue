@@ -1,5 +1,5 @@
 <template>
-  <b-card no-body>
+  <b-card class="shadow" no-body>
     <b-card-header>
       <h6 class="m-0 font-weight-bold text-primary">Ihre Bestellung</h6>
       <p v-show="false" >{{ resultKey }}</p>
@@ -35,9 +35,10 @@
       v-if="resultListValues.weight > 0"
       class="text-primary"
     >
-      {{ resultListValues.price }}€ / {{ resultListValues.weight }}g<br />
+      <small><small>Linke Maustaste hinzufügen / Rechte Maustaste entfernen</small></small><br />
+      {{ resultListValues.price | germanFloat }}€ / {{ resultListValues.weight }}g<br />
       <small>
-        {{ Math.round(resultListValues.price/resultListValues.weight*100*100)/100 }}€ / 100g
+        {{ Math.round(resultListValues.price/resultListValues.weight*100*100)/100 | germanFloat }}€ / 100g
       </small>
     </b-card-footer>
   </b-card>

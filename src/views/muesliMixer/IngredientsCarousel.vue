@@ -13,13 +13,13 @@
     >
       <template v-slot:img>
         <b-card-group>
-          <IngredientCard
+          <ingredient-card
             v-for="number in cardsOnThisScreen(slideIndex)"
             :key="number"
-            :sort=          "sorts[calcCardIndex (slideIndex, number)]"
-            :index=               "calcCardIndex (slideIndex, number)"
-            :cardsOnScreen= cardsOnScreen
-            :ingredientGroupID= ingredientGroupID
+            :sort=              "sorts[calcCardIndex (slideIndex, number)]"
+            :index=             "calcCardIndex (slideIndex, number)"
+            :cardsOnScreen=     "cardsOnScreen"
+            :ingredientGroupID= "ingredientGroupID"
           />
         </b-card-group>
       </template>

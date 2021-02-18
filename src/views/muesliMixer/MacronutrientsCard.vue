@@ -17,26 +17,29 @@
 
     <!-- Card Body -->
     <b-card-body>
-      <pie-chart
+      <macronutrients-chart
         class="chart-pie py-2"
         :chart-data="datacollection"
       />
+
+      <energy-bar :energy="resultListValues.energy / resultListValues.weight * 100" />
+
     </b-card-body>
   </b-card>
 </template>
 
 <script>
-import PieChart from './PieChart.js'
+import EnergyBar from './EnergyBar.vue'
+import MacronutrientsChart from './MacronutrientsChart.js'
 
 export default {
   components: {
-    PieChart
+    EnergyBar,
+    MacronutrientsChart
   },
-  data () {
-    return {
-      datacollection: {}
-    }
-  },
+  data: () => ({
+    datacollection: {}
+  }),
   mounted () {
     this.fillData()
   },

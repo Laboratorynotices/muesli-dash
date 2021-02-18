@@ -1,5 +1,5 @@
 <template>
-  <b-card no-body>
+  <b-card class="shadow" no-body>
     <div class="accordion" role="tablist">
       <b-card
         no-body
@@ -33,7 +33,7 @@
           :visible="index === 0"
         >
           <b-card-body class="p-2">
-            <IngredientsCarousel
+            <ingredients-carousel
               v-if="('sorts' in ingredient && ingredient.sorts.length)"
               :sorts="ingredient.sorts"
               :ingredientGroupID = index
