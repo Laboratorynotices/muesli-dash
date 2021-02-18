@@ -4,22 +4,19 @@ export default function germanFloatFilter (value) {
 
   // Проверка число ли это было
   if (typeof value !== 'number') {
+    /*
+    if (typeof value === 'string' &&
+        value.split('.').length - 1 === 1) {
+      // Это уже строчка и содержит только одну точку.
+
+      // Заменяем точку на запятую
+      value = value.toString().replace('.', ',')
+    }
+    */
+
     return value
   }
 
   // Заменяем точку на запятую
-  value = value.toString().replace('.', ',')
-
-  // После запятой должно быть два нуля
-  const pos = value.indexOf(',')
-
-  if (pos === -1) {
-    // Запятой не было, добавляем оба нуля
-    value = value + ',00'
-  } else if (value.length - 2 === pos) {
-    // Если запятая на предпоследнем месте, добавляем недостающий нуль
-    value = value + '0'
-  }
-
-  return value
+  return value.toString().replace('.', ',')
 }

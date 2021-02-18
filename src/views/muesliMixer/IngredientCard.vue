@@ -23,10 +23,10 @@
       >
         <p>{{ sort.description }}</p>
         <p>
-          <span class="fs-2"> {{ sort.price | germanFloat }}€</span>
+          <span class="fs-2"> {{ sort.price | germanFloat | price }}</span>
           <span class="align-top"> / {{ sort.weight }} g</span>
         </p>
-        <p>Preis pro 100 g: {{ Math.round(sort.price / sort.weight * 100 * 100) / 100 | germanFloat }}€</p>
+        <p>Preis pro 100 g: {{ Math.round(sort.price / sort.weight * 100 * 100) / 100 | germanFloat | price }}</p>
         <b-row class="pl-2">
           <b-col class="col-6">
             <b-row class="border-bottom">
@@ -53,7 +53,7 @@
               <b-col
                 class="text-right p-1"
               >
-                {{ sort.fat }}g
+                {{ sort.fat | germanFloat }}g
               </b-col>
             </b-row>
             <b-row class="border-bottom">
@@ -63,7 +63,7 @@
               <b-col
                 class="text-right p-1"
               >
-                {{ sort.carbohydrates }}g
+                {{ sort.carbohydrates | germanFloat }}g
               </b-col>
             </b-row>
             <b-row class="border-bottom">
@@ -73,7 +73,7 @@
               <b-col
                 class="text-right p-1"
               >
-                {{ sort.protein }}g
+                {{ sort.protein | germanFloat }}g
               </b-col>
             </b-row>
           </b-col>
@@ -88,7 +88,7 @@
     </b-card-text>
 
     <b-card-text>
-      <span class="fs-2"> {{ sort.price | germanFloat }}€</span>
+      <span class="fs-2"> {{ sort.price | germanFloat | price }}</span>
       <span class="align-top"> / {{ sort.weight }} g</span>
     </b-card-text>
 

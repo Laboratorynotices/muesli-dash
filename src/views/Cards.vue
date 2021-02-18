@@ -145,7 +145,7 @@
           </b-card-text>
 
           <b-card-text>
-            <span class="fs-2"> {{ 2 + i }},99€</span>
+            <span class="fs-2"> {{ '' + (2 + i) + ',99' | price }}</span>
             <span class="align-top"> / 580 g</span>
           </b-card-text>
 
