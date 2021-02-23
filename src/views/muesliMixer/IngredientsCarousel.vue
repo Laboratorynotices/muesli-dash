@@ -12,7 +12,9 @@
       :key="slideIndex"
     >
       <template v-slot:img>
-        <b-card-group>
+        <b-card-group
+          class="row"
+        >
           <ingredient-card
             v-for="number in cardsOnThisScreen(slideIndex)"
             :key="number"

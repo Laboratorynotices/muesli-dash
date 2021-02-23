@@ -45,7 +45,6 @@ export default {
   },
   methods: {
     fillData () {
-      console.log(this.resultListValues.fat / this.resultListValues.weight * 100)
       this.datacollection = {
         labels: ['Fett', 'Kohlenhydrate', 'Eiweiß', 'Sonstiges'],
         datasets: [{

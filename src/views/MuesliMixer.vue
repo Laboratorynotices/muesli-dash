@@ -10,19 +10,44 @@
       <b-col
         class="col-12 col-md-6 col-lg-5 col-xl-4 mb-4 order-2 order-md-1"
       >
-        <result-list
-          :ingredients="ingredients"
-          :muesliMix="muesliMix"
-          :resultKey="resultKey"
-          :resultListValues="resultListValues"
-        />
+        <b-form
+          @reset="emptyMuesliMix"
+          @submit.prevent="onSubmit"
+        >
+          <!--
+          action="/muesli/cart"
+          method="get"
+          -->
+          <result-list
+            :ingredients="ingredients"
+            :muesliMix="muesliMix"
+            :resultKey="resultKey"
+            :resultListValues="resultListValues"
+          />
 
-        <macronutrients-card
-          :resultKey="resultKey"
-          :resultListValues="resultListValues"
-          v-if="resultListValues.weight > 0"
-        />
+          <macronutrients-card
+            :resultKey="resultKey"
+            :resultListValues="resultListValues"
+            v-if="resultListValues.weight > 0"
+          />
 
+          <div
+            v-if="resultListValues.weight > 0"
+            class="d-flex flex-row align-items-center justify-content-between"
+          >
+            <b-button
+              class="shadow"
+              type="submit"
+              variant="primary"
+            >Zur Kasse</b-button>
+            <b-button
+              class="shadow"
+              type="reset"
+              variant="danger"
+            >Mix leeren</b-button>
+          </div>
+
+        </b-form>
       </b-col>
 
       <!-- Müsli wählen -->
@@ -707,6 +732,15 @@ export default {
       // Обновление ключа для принудительного обновления компонента
       this.resultKey++
     },
+    /**
+     * Опустошаем смесь
+     */
+    emptyMuesliMix () {
+      this.muesliMix = {}
+
+      // Обновление ключа для принудительного обновления компонента
+      this.resultKey++
+    },
     /*
      * Подсчитывает пищевую ценность заказа,
      * а так же его вес и цену в евро
@@ -758,6 +792,10 @@ export default {
       this.resultListValues.carbohydrates = 0
       this.resultListValues.protein = 0
       this.resultListValues.weight = 0
+    },
+    onSubmit () {
+      this.$route.meta.layout = 'blank'
+      console.log(JSON.stringify(this.muesliMix))
     }
   },
   created: function () {

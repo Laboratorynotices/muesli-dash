@@ -27,6 +27,11 @@
             class="float-right rounded-circle d-inline"
             style="width: 20%;"
           />
+          <input
+            type="hidden"
+            :name="'i[' + groupID + '][' + sortID + ']'"
+            :value="portions"
+          />
         </b-col>
       </b-row>
     </b-card-body>
